@@ -445,7 +445,7 @@ void VTerm::do_normal_char()
 		changed_line(cursor_y, cursor_x, width - 1);
 
 		u16 step = dw ? 2 : 1;
-		for (u16 i = width - step - 1; i >= cursor_x; i--) {
+		for (s32 i = width - step - 1; i >= cursor_x; i--) {
 			text[yp + i + step] = text[yp + i];
 			attrs[yp + i + step] = attrs[yp + i];
 		}
