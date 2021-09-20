@@ -45,7 +45,12 @@ Config::Config()
 	}
 
 	s8 name[64];
-	snprintf(name, sizeof(name), "%s/%s", home, ".fbtermrc");
+	const s8 *config_home = getenv("XDG_CONFIG_HOME");
+	if (!config_home) {
+		snprintf(name, sizeof(name), "%s/%s", home, ".config/fbtermrc");
+	} else {
+		snprintf(name, sizeof(name), "%s/%s", config_home, "fbtermrc");
+	}
 
 	checkConfigFile(name);
 
@@ -292,7 +297,7 @@ bool Config::parseArgs(s32 argc, s8 **argv)
 				"                  list            display available VESA video modes\n"
 #endif
 				"\n"
-				"See comments in ~/.fbtermrc for details of these options.\n"
+				"See comments in $XDG_CONFIG_HOME/fbtermrc for details of these options.\n"
 			);
 			return false;
 
