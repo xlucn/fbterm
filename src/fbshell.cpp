@@ -322,11 +322,11 @@ u8 VTerm::init_default_color(bool foreground)
 	if (foreground) {
 		color = 7;
 		Config::instance()->getOption("color-foreground", color);
-		if (color > 7) color = 7;
+		if (color > 255) color = 7;
 	} else {
 		color = 0;
 		Config::instance()->getOption("color-background", color);
-		if (color > 7) color = 0;
+		if (color > 255) color = 0;
 	}
 
 	return color;
@@ -777,7 +777,7 @@ bool FbShell::childProcessExited(s32 pid)
 void FbShell::configColors(){
 	s8 varColor[32], color[7], rgb[3];
 	u32 i,j,k,x;
-	for(k=0;k<16;k++){
+	for(k=0;k<256;k++){
 		sprintf(varColor,"color-%d",k);
 		Config::instance()->getOption(varColor, color, sizeof(color));
 		for(i=0;i<3;i++){
