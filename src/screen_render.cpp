@@ -78,7 +78,7 @@ void Screen::initFillDraw()
 
 		u32 color = 0;
 		Config::instance()->getOption("color-background", color);
-		if (color > 7) color = 0;
+		if (color > NR_COLORS) color = 0;
 		bgcolor = color;
 
 		u32 size = mBytesPerLine * ((mRotateType == Rotate0 || mRotateType == Rotate180) ? mHeight : mWidth);
