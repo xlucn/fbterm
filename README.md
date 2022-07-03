@@ -1,5 +1,20 @@
 # FbTerm - a fast FrameBuffer based TERMinal emulator for linux
 
+## Changes since google code upstream
+
+(this including my commits and others)
+
+Features:
+- configurable color palette up to 256 colors (involves multiple commits)
+- use `.config/fbtermrc` as configuration file
+- set TERM to 'fbterm' instead of 'linux' by default
+- hardcode hinting level to normal
+
+Fixes:
+- unexpected character appears when toggling input method with Ctrl-Space
+- use Ctrl-Alt-F[7-12] to avoid tty switching shortcuts
+- some build errors
+
 ## DESCRIPTION
 
 FbTerm is a fast terminal emulator for linux with frame buffer device or VESA video card. Features include:
